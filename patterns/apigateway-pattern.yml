@@ -1,0 +1,24 @@
+version: '3'
+services:
+  dashboard:
+    build: ../user-interfaces/dashboard
+    depends_on:
+    - boss
+    - deadlines
+    - meetings
+    ports:
+    - "4000:4000"
+  boss:
+    build: ../services/boss
+    ports:
+    - "3000:3000"
+  deadlines:
+    build: ../services/deadlines
+    ports:
+    - "80:80"
+  meetings:
+    build: ../services/meetings
+    ports:
+    - "1337:1337"
+
+  
