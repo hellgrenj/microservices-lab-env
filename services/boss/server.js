@@ -5,10 +5,6 @@ const port = 3000
 const locationService = require('./services/location')
 
 app.get('/', (req, res) => res.send('up and running'))
-
-app.get('/location', async (req, res) => { 
-    const location = await locationService.get()
-    res.send(location) 
-})
+app.get('/location',  (req, res) => res.send(locationService.getSync()))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
