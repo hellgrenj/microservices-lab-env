@@ -23,5 +23,4 @@ func main() {
 	http.HandleFunc("/timetonextmeeting", handler)
 	log.Print("now listening on port 1337")
 	http.ListenAndServe(":1337", nil)
-	
 }
