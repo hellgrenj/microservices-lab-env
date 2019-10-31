@@ -1,0 +1,2 @@
+FROM busybox:1.31
+ENTRYPOINT sleep 3 && echo 'all done'

@@ -20,5 +20,15 @@ services:
     build: ../services/meetings
     ports:
     - "1337:1337"
+  signaldone:
+    build:
+      context: .
+      dockerfile: Dockerfile.SIGNALDONE
+    depends_on:
+    - dashboard
+    - boss
+    - deadlines
+    - meetings
+
 
   

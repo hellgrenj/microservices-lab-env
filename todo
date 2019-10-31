@@ -6,7 +6,8 @@ eller finns något bättre, inbyggt, sätt?)
 
 2) bygg en apigateway (se påbörjat med kommentarer)
 
-3) behövs scenarios? read only UI nu.. vad ska puppeter göra mer än öppna sidan åt oss?
-borde scenarios istället vara instruktioner?
+3) Scenarios behövs för att peta om .env filer i dashboard.. kan sedan även öppna 
+siden med puppeter tänker jag :) framöver kanske denna lösning inte endast är readonly 
+och då kan den också klicka på knappar..
 
 Sen => patterns-demon för EventStream, BFF, Circuit Breakers .. mer? :) 
