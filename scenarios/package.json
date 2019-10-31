@@ -1,0 +1,14 @@
+{
+  "name": "scenarios",
+  "version": "1.0.0",
+  "description": "the UI as well as every service should be able to start in different modes with different configuration in order to demonstrate different patterns and deployment strategies.",
+  "main": "demo-api-gateway-pattern.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "shelljs": "^0.8.3"
+  }
+}
