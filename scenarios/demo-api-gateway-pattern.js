@@ -3,8 +3,14 @@ const sh = require('shelljs')
 const chalk = require('chalk')
 const webhookListener = require('./webhook/listener')
 const puppeteer = require('puppeteer')
+const figlet = require('figlet')
+const clearScreen = require('clear');
 
+clearScreen();
 ;(async () => {
+    
+    sh.echo(chalk.green.bold('loading scenario:'))
+    sh.echo(chalk.green.bold(figlet.textSync('apigateway')))
 
     sh.echo(chalk.blue('starting webhook listener..'))
     await webhookListener.init()
@@ -46,5 +52,6 @@ process.on('SIGINT', () => { // when ctrl + c (clean up)
         sh.echo('failed to stop running containers');
         sh.exit(1);
     }
+    sh.echo(chalk.bold.green('Thanks for playing!'))
     process.exit()
 })
