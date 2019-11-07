@@ -31,7 +31,7 @@ clearScreen();
     console.log(chalk.yellow('SYSTEM IS UP'))
     
     sh.echo(chalk.blue('starting up a browser instance...'))
-    const browser = await puppeteer.launch({ headless: false })
+    const browser = await puppeteer.launch({ headless: false, args: ['--start-fullscreen']})
     const page = await browser.newPage()
     page.goto('http:localhost:4000')
 
