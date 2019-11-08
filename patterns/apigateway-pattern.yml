@@ -1,5 +1,12 @@
 version: '3'
 services:
+  apigateway:
+    build: ../services/apigateway
+    ports:
+    - "8585:8585"
+    environment:
+      - BOSS_SERVICE_URL=http://boss:3000/
+      - PORT=8585
   dashboard:
     build: ../user-interfaces/dashboard
     depends_on:

@@ -26,4 +26,3 @@ if (sh.exec('npm install').code !== 0) {
     sh.exit(1);
 }
 
-// install puppeter with chromium .. se min check for devices repo
