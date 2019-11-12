@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <Main msg="OSMAS Dashboard v 0.1" />
+    <div>
+     <span>{{bossLocation}}</span>
+    </div>
   </div>
 </template>
 
@@ -15,12 +18,18 @@ export default {
   components: {
     Main,
   },
+  data() {
+    return {
+      bossLocation: '',
+    };
+  },
   methods: {
     demo: async function demo() {
       await axios
         .get('http://localhost:8585')
         .then((res) => {
           console.log(res.data);
+          this.bossLocation = res.data;
         })
         .catch((err) => {
           console.log(err);
