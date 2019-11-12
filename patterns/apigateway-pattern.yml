@@ -1,6 +1,7 @@
 version: '3'
 services:
   apigateway:
+    restart: always
     build: ../services/apigateway
     ports:
     - "8585:8585"
