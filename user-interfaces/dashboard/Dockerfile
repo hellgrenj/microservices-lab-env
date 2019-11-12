@@ -1,7 +1,7 @@
 FROM node:12-alpine
 WORKDIR /app
 COPY . .
-WORKDIR /app/client/dist
+WORKDIR /app/client
 RUN npm install
 RUN npm run build
 WORKDIR /app
