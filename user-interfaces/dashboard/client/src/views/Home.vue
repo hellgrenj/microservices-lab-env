@@ -2,7 +2,7 @@
   <div class="home">
     <Main msg="OSMAS Dashboard v 0.1" />
     <div>
-     <span>{{bossLocation}}</span>
+     <span>Location of the boss: {{bossLocation}}</span>
     </div>
   </div>
 </template>
