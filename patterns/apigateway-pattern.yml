@@ -5,6 +5,8 @@ services:
     build: ../services/apigateway
     ports:
     - "8585:8585"
+    depends_on:
+    - redis
     environment:
       - BOSS_SERVICE_URL=http://boss:3000/
       - DEADLINES_SERVICE_URL=http://deadlines:80/
@@ -16,6 +18,8 @@ services:
     - boss
     - deadlines
     - meetings
+    depends_on:
+    - redis
     ports:
     - "4000:4000"
   boss:
@@ -30,6 +34,8 @@ services:
     build: ../services/meetings
     ports:
     - "1337:1337"
+  redis:
+    image: redis
   signaldone:
     network_mode: host
     build:
