@@ -7,6 +7,8 @@ services:
     - "8585:8585"
     environment:
       - BOSS_SERVICE_URL=http://boss:3000/
+      - DEADLINES_SERVICE_URL=http://deadlines:80/
+      - MEETINGS_SERVICE_URL=http://meetings:1337/
       - PORT=8585
   dashboard:
     build: ../user-interfaces/dashboard
