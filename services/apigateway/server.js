@@ -1,15 +1,26 @@
-const http = require('http')
-const httpProxy = require('http-proxy')
-const proxy = httpProxy.createProxyServer({})
-const server = http.createServer(function (req, res) {
-  console.log('apigateway received a request')
-  proxy.web(req, res, { target: `${process.env.BOSS_SERVICE_URL}/location` })
-})
-console.log(`apigateway listening on port ${process.env.PORT}`)
-server.listen(process.env.PORT)
+const express = require('express')
+const app = express()
+const port = process.env.PORT
+const axios = require('axios')
+const cors = require('cors')
 
-// CORS...
-proxy.on('proxyRes', function(proxyRes, req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-});
+app.use(cors())
+
+app.get('/location', (req, res) => {
+  axios({
+    method: 'get',
+    url: process.env.BOSS_SERVICE_URL + 'location',
+    responseType: 'stream'
+  })
+    .then(function (response) {
+      // handle success
+      response.data.pipe(res)
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+      res.send(500, 'error')
+    });
+})
+
+app.listen(port, () => console.log(`API Gateway listening on port ${port}!`))

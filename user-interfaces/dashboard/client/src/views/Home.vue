@@ -26,7 +26,7 @@ export default {
   methods: {
     demo: async function demo() {
       await axios
-        .get('http://localhost:8585')
+        .get('http://localhost:8585/location')
         .then((res) => {
           console.log(res.data);
           this.bossLocation = res.data;
