@@ -31,3 +31,14 @@ The information can be:
 - wheter or not it is the bosses birthday? (same the-boss-service as above..)  
 - time to next stand up (subdomain and bounded context: meetings, lives in the-meetings-service)    
 .... etc :)   
+
+
+## TODO?: Visualize how requests are routed through the system
+make sence for API Gatway and BFF pattern demo's .. 
+but Circuit Breaker and transactional outbox m.m.?
+
+idea: dashboard gives every request a simple name and every service emits an event (redis pub sub?)
+when it receives a request. a socket.io server pushes events to the dashboard that, in some simple way, 
+visualizes what service received what request and when.. like coloring a box. fade away after 1 second.. 
+
+
