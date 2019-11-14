@@ -1,14 +1,14 @@
 <template>
   <div class="home">
-    <Main msg="OSMAS Dashboard v 0.1" />
     <div class="container">
-      <div class="alert alert-dismissible alert-danger">
+      <Main msg="OSMAS Dashboard v 0.1" />
+      <div class="alert alert-dismissible alert-primary">
         <strong>The boss is {{bossLocation}}</strong>
       </div>
-      <div class="alert alert-dismissible alert-danger">
+      <div class="alert alert-dismissible alert-primary">
         <strong>{{numberOfMissedDeadlines}}</strong>
       </div>
-      <div class="alert alert-dismissible alert-danger">
+      <div class="alert alert-dismissible alert-primary">
         <strong>{{timeToNextMeeting}}</strong>
       </div>
     </div>
@@ -45,7 +45,7 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      }, 3000);
+      }, 15000);
     },
     monitorDeadlines: function demo() {
       setInterval(async () => {
@@ -71,7 +71,7 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      }, 5000);
+      }, 12000);
     }
   },
   async mounted() {
