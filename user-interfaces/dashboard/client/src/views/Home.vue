@@ -3,7 +3,7 @@
     <div class="container">
       <Main msg="OSMAS Dashboard v 0.1" />
       <div class="alert alert-dismissible alert-primary">
-        <strong>The boss is {{bossLocation}}</strong>
+        <strong>{{bossLocation}}</strong>
       </div>
       <div class="alert alert-dismissible alert-primary">
         <strong>{{numberOfMissedDeadlines}}</strong>
@@ -11,9 +11,10 @@
       <div class="alert alert-dismissible alert-primary">
         <strong>{{timeToNextMeeting}}</strong>
       </div>
+      System events <br/>
       <div class="system-events">
         <span v-for="event in systemEvents" :key="event">
-          <span>{{event}}</span> <br/>
+          <span class="eventrows">{{event}}</span> <br/>
         </span>
       </div>
     </div>
@@ -36,9 +37,9 @@ export default {
   },
   data() {
     return {
-      bossLocation: "loading boss location....",
-      numberOfMissedDeadlines: "loading number of missed deadlines",
-      timeToNextMeeting: "loading time to next meeting",
+      bossLocation: "loading boss location...",
+      numberOfMissedDeadlines: "loading number of missed deadlines...",
+      timeToNextMeeting: "loading time to next meeting...",
       systemEvents: []
     };
   },
@@ -89,7 +90,7 @@ export default {
     this.monitorMeetings();
     socket.on("message", msg => {
       console.log("received msg", msg);
-      this.systemEvents.push(msg);
+      this.systemEvents.unshift(msg);
     });
     socket.on("disconnect", function() {});
   }
@@ -117,5 +118,5 @@ export default {
   background-color: rgb(43, 42, 42);
   color: rgb(48, 216, 48);
 }
-
+.eventrows {padding-bottom: 1px;}
 </style>

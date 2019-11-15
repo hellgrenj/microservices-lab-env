@@ -5,5 +5,6 @@ export function getLocationSync() {
 }
 function getRandomLocationSync() {
     const randomIndex = Math.floor(Math.random() * locations.length);
-    return locations[randomIndex];
+    const message = `The boss is  ${ locations[randomIndex]}`;
+    return message;
 }
