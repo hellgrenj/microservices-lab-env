@@ -12,6 +12,12 @@ services:
       - DEADLINES_SERVICE_URL=http://deadlines:80/
       - MEETINGS_SERVICE_URL=http://meetings:1337/
       - PORT=8585
+  socketserver:
+    build: ../services/socketserver
+    ports:
+      - "8787:8787"
+    depends_on:
+      - redis
   dashboard:
     build: ../user-interfaces/dashboard
     depends_on:

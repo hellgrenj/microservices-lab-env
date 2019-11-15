@@ -16,6 +16,9 @@
 </template>
 
 <script>
+import io from "socket.io-client";
+const socket = io("http://localhost:8787");
+
 import axios from "axios";
 
 // @ is an alias to /src
@@ -29,7 +32,7 @@ export default {
   data() {
     return {
       bossLocation: "loading boss location....",
-      numberOfMissedDeadlines: 'loading number of missed deadlines',
+      numberOfMissedDeadlines: "loading number of missed deadlines",
       timeToNextMeeting: "loading time to next meeting"
     };
   },
@@ -78,6 +81,10 @@ export default {
     this.monitorTheBoss();
     this.monitorDeadlines();
     this.monitorMeetings();
+    socket.on("message", function(msg) {
+      console.log('received msg', msg);
+    });
+    socket.on("disconnect", function() {});
   }
 };
 </script>
