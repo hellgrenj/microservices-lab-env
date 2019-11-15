@@ -11,6 +11,11 @@
       <div class="alert alert-dismissible alert-primary">
         <strong>{{timeToNextMeeting}}</strong>
       </div>
+      <div class="system-events">
+        <span v-for="event in systemEvents" :key="event">
+          <span>{{event}}</span> <br/>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +38,8 @@ export default {
     return {
       bossLocation: "loading boss location....",
       numberOfMissedDeadlines: "loading number of missed deadlines",
-      timeToNextMeeting: "loading time to next meeting"
+      timeToNextMeeting: "loading time to next meeting",
+      systemEvents: []
     };
   },
   methods: {
@@ -81,8 +87,9 @@ export default {
     this.monitorTheBoss();
     this.monitorDeadlines();
     this.monitorMeetings();
-    socket.on("message", function(msg) {
-      console.log('received msg', msg);
+    socket.on("message", msg => {
+      console.log("received msg", msg);
+      this.systemEvents.push(msg);
     });
     socket.on("disconnect", function() {});
   }
@@ -101,4 +108,14 @@ export default {
   margin: auto;
   text-align: center;
 }
+.system-events {
+  text-align:left;
+  min-height: 200px;
+  max-height: 200px;
+  overflow: hidden;
+  font-size: 10px;
+  background-color: rgb(43, 42, 42);
+  color: rgb(48, 216, 48);
+}
+
 </style>

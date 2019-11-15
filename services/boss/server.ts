@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 );
 app.get("/location", (req, res) => {
     res.send(getLocationSync())
-    pub.publish("news", "boss service received request");
+    pub.publish("systemevents", "BOSS_SERVICE > (GET) /location");
 });
 
 app.listen(port, () => {

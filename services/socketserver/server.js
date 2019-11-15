@@ -6,14 +6,12 @@ io.on('connection', function (socket) {
     console.log('a user connected');
 });
 
-redis.subscribe("news", "music", function (err, count) {
+redis.subscribe("systemevents", function (err, count) {
     // Now we are subscribed to both the 'news' and 'music' channels.
     // `count` represents the number of channels we are currently subscribed to. 
 });
 
 redis.on("message", function (channel, message) {
-    // Receive message Hello world! from channel news
-    // Receive message Hello again! from channel music
     console.log("Receive message %s from channel %s", message, channel);
     io.emit('message', message);
 });

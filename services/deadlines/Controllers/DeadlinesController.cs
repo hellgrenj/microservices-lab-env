@@ -23,7 +23,7 @@ namespace deadlines.Controllers
             // spike: publish event to redis
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("redis:6379");  
             ISubscriber sub = redis.GetSubscriber();
-            sub.Publish("news", "from deadlines service..");
+            sub.Publish("systemevents", "DEADLINES_SERVICE > (GET) deadlines/numberofmissed");
             // end of spike
             var random = new Random();
             var listOfRandomValues = new List<string> { "a lot of", "two", "three", "four" };

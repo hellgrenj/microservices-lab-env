@@ -28,7 +28,7 @@ func handler(writer http.ResponseWriter, reader *http.Request) {
 	if err != nil {
 		return
 	}
-	c.Do("PUBLISH", "news", "meetings service received request")
+	c.Do("PUBLISH", "systemevents", "MEETINGS_SERVICE > (GET) /timetonextmeeting")
 }
 
 func main() {
