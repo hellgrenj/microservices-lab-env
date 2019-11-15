@@ -6,8 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = express_1.default();
 const port = 3000;
+const ioredis_1 = __importDefault(require("ioredis"));
+const pub = new ioredis_1.default(6379, "redis");
 const location_1 = require("./services/location");
-app.get("/", (req, res) => res.send("up and running"));
+app.get("/", (req, res) => {
+    // tslint:disable-next-line:no-console
+    console.log("boss service / received request");
+    pub.publish("news", "boss service received request");
+    res.send("up and running");
+});
 app.get("/location", (req, res) => res.send(location_1.getLocationSync()));
 app.listen(port, () => {
     // tslint:disable-next-line:no-console
