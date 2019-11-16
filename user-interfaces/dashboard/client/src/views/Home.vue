@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <em>{{patternMode}}</em>
+    
     <div class="container">
+      <em>{{patternMode}}</em><br/>
       <Main msg="OSMAS Dashboard v 0.1" />
       <div class="alert alert-dismissible alert-primary">
         <strong>{{bossLocation}}</strong>
@@ -38,7 +39,7 @@ export default {
   },
   data() {
     return {
-      patternMode: process.env.PATTERN_MODE,
+      patternMode: process.env.VUE_APP_PATTERN_MODE,
       bossLocation: "loading boss location...",
       numberOfMissedDeadlines: "loading number of missed deadlines...",
       timeToNextMeeting: "loading time to next meeting...",
@@ -87,7 +88,6 @@ export default {
     }
   },
   async mounted() {
-    console.log(process.env.PATTERN_MODE)
     this.monitorTheBoss();
     this.monitorDeadlines();
     this.monitorMeetings();
