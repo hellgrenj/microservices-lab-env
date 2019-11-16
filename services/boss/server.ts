@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 }
 );
 app.get("/location", (req, res) => {
-    res.send(getLocationSync())
+    res.send(getLocationSync());
     pub.publish("systemevents", "BOSS_SERVICE > (GET) /location");
 });
 

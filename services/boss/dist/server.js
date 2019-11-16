@@ -12,10 +12,12 @@ const location_1 = require("./services/location");
 app.get("/", (req, res) => {
     // tslint:disable-next-line:no-console
     console.log("boss service / received request");
-    pub.publish("news", "boss service received request");
     res.send("up and running");
 });
-app.get("/location", (req, res) => res.send(location_1.getLocationSync()));
+app.get("/location", (req, res) => {
+    res.send(location_1.getLocationSync());
+    pub.publish("systemevents", "BOSS_SERVICE > (GET) /location");
+});
 app.listen(port, () => {
     // tslint:disable-next-line:no-console
     console.log(`Example app listening on port ${port}!`);
