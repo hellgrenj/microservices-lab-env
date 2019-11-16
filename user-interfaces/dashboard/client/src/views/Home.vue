@@ -2,7 +2,7 @@
   <div class="home">
     
     <div class="container">
-      <em>{{patternMode}}</em><br/>
+      <em>started in pattern mode: {{patternMode}}</em><br/>
       <Main msg="OSMAS Dashboard v 0.1" />
       <div class="alert alert-dismissible alert-primary">
         <strong>{{bossLocation}}</strong>
