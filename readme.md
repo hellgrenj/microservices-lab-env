@@ -1,6 +1,7 @@
 # microservices lab environment
 
-An environment for evaluating all things microservices. Built for developers.
+An environment for evaluating all things microservices. Built for developers.  
+
 
 ## prerequisites
 You need to have the following installed on your computer  
@@ -14,13 +15,13 @@ You need to have the following installed on your computer
 ## structure
 /services (this is where all the different microservices live)  
 /deployment-strategies (different strategies demonstrated via kubernetes, the yaml files live in this folder)  
-/patterns (docker-compose files for spinning up a specifik set on services in order to demonstrate a pattern)  
-/user-interfaces (this is where the user interfaces lives)  
+/patterns (docker-compose files for spinning up a specific set of services in order to demonstrate a pattern)  
+/user-interfaces (this is where the user interfaces live)  
 /scenarios (demo clients, UI-driven or API-consumer)  
 /scripts (automation for this environment)  
 
 ## example
-``node scenarios/demo-backend-for-front-end-pattern``
+``node scenarios/demo-apigateway-pattern``
 
 ## demo system in this environment 
 In order to test different patterns and deployment strategies we need a simple target system.  
@@ -32,13 +33,5 @@ The information can be:
 - time to next stand up (subdomain and bounded context: meetings, lives in the-meetings-service)    
 .... etc :)   
 
-
-## TODO?: Visualize how requests are routed through the system
-make sence for API Gatway and BFF pattern demo's .. 
-but Circuit Breaker and transactional outbox m.m.?
-
-idea: dashboard gives every request a simple name and every service emits an event (redis pub sub?)
-when it receives a request. a socket.io server pushes events to the dashboard that, in some simple way, 
-visualizes what service received what request and when.. like coloring a box. fade away after 1 second.. 
-
-
+## todo 
+More patterns and deployment strategies 
