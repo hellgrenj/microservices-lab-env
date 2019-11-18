@@ -7,9 +7,7 @@ const Redis = require("ioredis");
 const redis = new Redis(6379, "redis");
 var pub = new Redis(6379, "redis");
 
-
 app.use(cors())
-
 app.get('/boss/location', (req, res) => {
   pub.publish("systemevents", "APIGATEWAY > (GET) /boss/location");
   axios({
@@ -18,11 +16,9 @@ app.get('/boss/location', (req, res) => {
     responseType: 'stream'
   })
     .then(function (response) {
-      // handle success
       response.data.pipe(res)
     })
     .catch(function (error) {
-      // handle error
       console.log(error);
       res.send(500, 'error')
     });
@@ -35,11 +31,9 @@ app.get('/deadlines/numberofmissed', (req, res) => {
     responseType: 'stream'
   })
     .then(function (response) {
-      // handle success
       response.data.pipe(res)
     })
     .catch(function (error) {
-      // handle error
       console.log(error);
       res.send(500, 'error')
     });
@@ -52,15 +46,12 @@ app.get('/meetings/timetonextmeeting', (req, res) => {
     responseType: 'stream'
   })
     .then(function (response) {
-      // handle success
       response.data.pipe(res)
     })
     .catch(function (error) {
-      // handle error
       console.log(error);
       res.send(500, 'error')
     });
 })
-
 
 app.listen(port, () => console.log(`API Gateway listening on port ${port}!`))
