@@ -21,7 +21,7 @@ You need to have the following installed on your computer
 /scripts (automation for this environment)  
 
 ## example
-``node scenarios/demo-apigateway-pattern``
+``node scenarios/demo-api-gateway-pattern``
 
 ## demo system in this environment 
 In order to test different patterns and deployment strategies we need a simple target system.  
@@ -34,4 +34,12 @@ The information can be:
 .... etc :)   
 
 ## todo 
-More patterns and deployment strategies 
+More patterns and deployment strategies  
+event stream  
+transactional outbox  
+bff  
+circuit breaker  
+.
+.
+.
+
