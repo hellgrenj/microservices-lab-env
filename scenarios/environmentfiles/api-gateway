@@ -1,0 +1,4 @@
+VUE_APP_PATTERN_MODE=apigateway
+VUE_APP_LOCATION_OF_BOSS_URL=http://localhost:8585/boss/location
+VUE_APP_NUMBER_OF_MISSED_DEADLINES_URL=http://localhost:8585/deadlines/numberofmissed
+VUE_APP_TIME_TO_NEXT_MEETING_URL=http://localhost:8585/meetings/timetonextmeeting

@@ -15,6 +15,7 @@ var (
 )
 
 func handler(writer http.ResponseWriter, reader *http.Request) {
+	enableCors(&writer)
 	seconds := make([]int, 0)
 	seconds = append(seconds,
 		10,
@@ -36,4 +37,7 @@ func main() {
 	http.HandleFunc("/timetonextmeeting", handler)
 	log.Print("now listening on port 1337")
 	http.ListenAndServe(":1337", nil)
+}
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }

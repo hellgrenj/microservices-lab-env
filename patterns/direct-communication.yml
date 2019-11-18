@@ -1,0 +1,47 @@
+version: '3'
+services:
+  socketserver:
+    build: ../services/socketserver
+    ports:
+      - "8787:8787"
+    depends_on:
+      - redis
+  dashboard:
+    build: ../user-interfaces/dashboard
+    depends_on:
+    - boss
+    - deadlines
+    - meetings
+    depends_on:
+    - redis
+    ports:
+    - "4000:4000"
+  boss:
+    build: ../services/boss
+    ports:
+    - "3000:3000"
+  deadlines:
+    build: ../services/deadlines
+    ports:
+    - "80:80"
+  meetings:
+    build: ../services/meetings
+    ports:
+    - "1337:1337"
+  redis:
+    image: redis
+  signaldone:
+    network_mode: host
+    build:
+      context: .
+      dockerfile: Dockerfile.SIGNALDONE
+    depends_on:
+    - dashboard
+    - boss
+    - deadlines
+    - meetings
+    - redis
+    
+
+
+  

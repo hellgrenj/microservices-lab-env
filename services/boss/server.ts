@@ -1,10 +1,13 @@
 import express from "express";
+import cors from "cors";
 const app = express();
 const port = 3000;
 import Redis from "ioredis";
 const pub = new Redis(6379, "redis");
 
 import { getLocationSync } from "./services/location";
+
+app.use(cors())
 
 app.get("/", (req, res) => {
 

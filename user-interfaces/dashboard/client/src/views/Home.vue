@@ -50,7 +50,7 @@ export default {
     monitorTheBoss: function demo() {
       setInterval(async () => {
         await axios
-          .get("http://localhost:8585/boss/location")
+          .get(process.env.VUE_APP_LOCATION_OF_BOSS_URL)
           .then(res => {
             console.log(res.data);
             this.bossLocation = res.data;
@@ -63,7 +63,7 @@ export default {
     monitorDeadlines: function demo() {
       setInterval(async () => {
         await axios
-          .get("http://localhost:8585/deadlines/numberofmissed")
+          .get(process.env.VUE_APP_NUMBER_OF_MISSED_DEADLINES_URL)
           .then(res => {
             console.log(res.data);
             this.numberOfMissedDeadlines = res.data;
@@ -76,7 +76,7 @@ export default {
     monitorMeetings: function demo() {
       setInterval(async () => {
         await axios
-          .get("http://localhost:8585/meetings/timetonextmeeting")
+          .get(process.env.VUE_APP_TIME_TO_NEXT_MEETING_URL)
           .then(res => {
             console.log(res.data);
             this.timeToNextMeeting = res.data;

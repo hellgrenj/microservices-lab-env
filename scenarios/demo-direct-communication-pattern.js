@@ -10,23 +10,23 @@ clearScreen();
 ;(async () => {
     
     sh.echo(chalk.green.bold('loading scenario:'))
-    sh.echo(chalk.green.bold(figlet.textSync('apigateway')))
+    sh.echo(chalk.green.bold(figlet.textSync('direct communication')))
 
     sh.echo(chalk.blue('starting webhook listener..'))
     await webhookListener.init()
     
     sh.echo(chalk.blue('prepping .env files for this scenario..'))
-    sh.cp(path.join(__dirname, './environmentfiles/api-gateway'), path.join(__dirname, '../user-interfaces/dashboard/client/.env'))
+    sh.cp(path.join(__dirname, './environmentfiles/direct-communication'), path.join(__dirname, '../user-interfaces/dashboard/client/.env'))
 
-    sh.echo(chalk.blue('stopping already running apigateway scenario containers..'))
+    sh.echo(chalk.blue('stopping already running direct communication scenario containers..'))
     sh.cd(path.join(__dirname, '../patterns'))
-    if (sh.exec('docker-compose -f apigateway-pattern.yml stop').code !== 0) {
-        sh.echo('failed to stop already running apigateway scenario');
+    if (sh.exec('docker-compose -f direct-communication.yml stop').code !== 0) {
+        sh.echo('failed to stop already running direct communication scenario');
         sh.exit(1);
     }
 
     sh.echo(chalk.blue('starting containers..'))
-    sh.exec('docker-compose -f apigateway-pattern.yml up --build', {async:true})
+    sh.exec('docker-compose -f direct-communication.yml up --build', {async:true})
 
     await systemup()
     console.log(chalk.yellow('SYSTEM IS UP'))
@@ -49,7 +49,7 @@ async function systemup() {
 process.on('SIGINT', () => { // when ctrl + c (clean up)
     sh.echo(chalk.blue('stopping running containers for this scenario..'))
     sh.cd(path.join(__dirname, '../patterns'))
-    if (sh.exec('docker-compose -f apigateway-pattern.yml stop').code !== 0) {
+    if (sh.exec('docker-compose -f direct-communication.yml stop').code !== 0) {
         sh.echo('failed to stop running containers');
         sh.exit(1);
     }

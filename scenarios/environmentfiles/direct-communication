@@ -1,0 +1,4 @@
+VUE_APP_PATTERN_MODE=direct communication
+VUE_APP_LOCATION_OF_BOSS_URL=http://localhost:3000/location
+VUE_APP_NUMBER_OF_MISSED_DEADLINES_URL=http://localhost:80/deadlines/numberofmissed
+VUE_APP_TIME_TO_NEXT_MEETING_URL=http://localhost:1337/timetonextmeeting

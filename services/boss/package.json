@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.6",
     "@types/ioredis": "^4.0.19",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "ioredis": "^4.14.1"
   },
