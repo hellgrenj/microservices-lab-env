@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{msg}}</h1>
-    <h5>Office Space Monitoring System that helps you succeed to succeed at work</h5>
+    <h5>Office Space Monitoring And Assistance System</h5>
   </div>
 </template>
 

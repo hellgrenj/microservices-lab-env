@@ -6,15 +6,22 @@ const puppeteer = require('puppeteer')
 const figlet = require('figlet')
 const clearScreen = require('clear');
 
+
 clearScreen();
-;(async () => {
-    
+; (async () => {
+
     sh.echo(chalk.green.bold('loading scenario:'))
     sh.echo(chalk.green.bold(figlet.textSync('direct communication')))
 
+    let build = false
+    if (process.argv[2] === '--build') {
+        build = true
+        sh.echo(chalk.blue('<started with --build, will rebuild all containers>'))
+    }
+    
     sh.echo(chalk.blue('starting webhook listener..'))
     await webhookListener.init()
-    
+
     sh.echo(chalk.blue('prepping .env files for this scenario..'))
     sh.cp(path.join(__dirname, './environmentfiles/direct-communication'), path.join(__dirname, '../user-interfaces/dashboard/client/.env'))
 
@@ -26,13 +33,18 @@ clearScreen();
     }
 
     sh.echo(chalk.blue('starting containers..'))
-    sh.exec('docker-compose -f direct-communication.yml up --build', {async:true})
+    if (build) {
+        sh.exec('docker-compose -f direct-communication.yml up --build', { async: true })
+    } else {
+        sh.exec('docker-compose -f direct-communication.yml up', { async: true })
+    }
+
 
     await systemup()
     console.log(chalk.yellow('SYSTEM IS UP'))
-    
+
     sh.echo(chalk.blue('starting up a browser instance...'))
-    const browser = await puppeteer.launch({ headless: false, args: ['--start-fullscreen']})
+    const browser = await puppeteer.launch({ headless: false, args: ['--start-fullscreen'] })
     const page = await browser.newPage()
     page.goto('http:localhost:4000')
 

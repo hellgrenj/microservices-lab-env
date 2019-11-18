@@ -24,7 +24,7 @@ You need to have the following installed on your computer
 
 ## demo system in this environment 
 In order to test different patterns and deployment strategies we need a simple target system.  
-An office space monitoring and assistans system (OSMAS) with a simple read-only dashboard. The UI will fetch information from different sources and display them on the screen. Clearly OSMAS also needs to be enhanced with additional specialized UI's (..so we can demonstrate the BFF pattern..).
+An office space monitoring and assistance system (OSMAS) with a simple read-only dashboard. The UI will fetch information from different sources and display them on the screen. Clearly OSMAS also needs to be enhanced with additional specialized UI's (..so we can demonstrate the BFF pattern..).
 
 The information can be:   
 - location of the boss (this subdomain and bounded context, the boss, is owned by the-boss-service)    

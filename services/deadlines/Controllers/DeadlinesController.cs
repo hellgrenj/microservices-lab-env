@@ -26,7 +26,7 @@ namespace deadlines.Controllers
             sub.Publish("systemevents", "DEADLINES_SERVICE > (GET) deadlines/numberofmissed");
             // end of spike
             var random = new Random();
-            var listOfRandomValues = new List<string> { "a lot of", "two", "three", "four" };
+            var listOfRandomValues = new List<string> { "99", "two", "three", "four" };
             int index = random.Next(listOfRandomValues.Count);
             return Ok($"You have missed {listOfRandomValues[index]} deadlines this week");
         }
