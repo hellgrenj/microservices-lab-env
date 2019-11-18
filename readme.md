@@ -20,7 +20,7 @@ You need to have the following installed on your computer
 /scenarios (demo clients, UI-driven or API-consumer)  
 /scripts (automation for this environment)  
 
-## example
+## to demo a scenario, run:
 ``node scenarios/demo-api-gateway-pattern``
 
 ## demo system in this environment 
