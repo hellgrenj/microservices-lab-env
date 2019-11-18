@@ -2,7 +2,6 @@
 
 An environment for evaluating all things microservices. Built for developers.  
 
-
 ## prerequisites
 You need to have the following installed on your computer  
 - Docker  
