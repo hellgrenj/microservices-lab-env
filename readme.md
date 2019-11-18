@@ -20,7 +20,8 @@ You need to have the following installed on your computer
 /scripts (automation for this environment)  
 
 ## to demo a scenario, run:
-``node scenarios/demo-api-gateway-pattern``
+``node scenarios/demo-api-gateway-pattern --build``  
+(You can omit the --build flag to speed things up BUT then the latest build for every container will be used. If you are moving between scenarios this will cause containers starting up with the "wrong" configuration)
 
 ## demo system in this environment 
 In order to test different patterns and deployment strategies we need a simple target system.  
