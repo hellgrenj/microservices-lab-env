@@ -120,6 +120,7 @@ export default {
   font-size: 10px;
   background-color: rgb(43, 42, 42);
   color: rgb(48, 216, 48);
+  padding:5px;
 }
 .eventrows {padding-bottom: 1px;}
 </style>
