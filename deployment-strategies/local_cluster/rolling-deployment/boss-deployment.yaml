@@ -9,8 +9,10 @@ metadata:
     io.kompose.service: boss
   name: boss
 spec:
-  replicas: 1
-  strategy: {}
+  replicas: 2
+  strategy: {
+    type: RollingUpdate
+  }
   template:
     metadata:
       annotations:
@@ -21,11 +23,17 @@ spec:
         io.kompose.service: boss
     spec:
       containers:
-      - image: boss
+      - image: boss_$(Build.BuildId)
         name: boss
         imagePullPolicy: Never # can use local image in docker desktop
         ports:
         - containerPort: 3000
-        resources: {}
-      restartPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /location
+            port: 3000
+            httpHeaders:
+              - name: Host
+                value: KubernetesLivenessProbe
+          initialDelaySeconds: 5
 status: {}
