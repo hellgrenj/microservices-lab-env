@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f apigateway-pattern.yml
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: apigateway
+  name: apigateway
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f apigateway-pattern.yml
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: apigateway
+    spec:
+      containers:
+      - env:
+        - name: BOSS_SERVICE_URL
+          value: http://boss:3000/
+        - name: DEADLINES_SERVICE_URL
+          value: http://deadlines:80/
+        - name: MEETINGS_SERVICE_URL
+          value: http://meetings:1337/
+        - name: PORT
+          value: "8585"
+        image: apigateway
+        name: apigateway
+        ports:
+        - containerPort: 8585
+        resources: {}
+      restartPolicy: Always
+status: {}

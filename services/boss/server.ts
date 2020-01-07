@@ -1,5 +1,5 @@
-import express from "express";
 import cors from "cors";
+import express from "express";
 const app = express();
 const port = 3000;
 import Redis from "ioredis";
@@ -7,7 +7,7 @@ const pub = new Redis(6379, "redis");
 
 import { getLocationSync } from "./services/location";
 
-app.use(cors())
+app.use(cors());
 app.get("/", (req, res) => {
     // tslint:disable-next-line:no-console
     console.log("boss service / received request");

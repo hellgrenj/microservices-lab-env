@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f apigateway-pattern.yml
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: socketserver
+  name: socketserver
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f apigateway-pattern.yml
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: socketserver
+    spec:
+      containers:
+      - image: socketserver
+        name: socketserver
+        ports:
+        - containerPort: 8787
+        resources: {}
+      restartPolicy: Always
+status: {}

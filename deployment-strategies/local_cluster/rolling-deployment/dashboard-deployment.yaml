@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f apigateway-pattern.yml
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: dashboard
+  name: dashboard
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f apigateway-pattern.yml
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: dashboard
+    spec:
+      containers:
+      - image: dashboard
+        name: dashboard
+        ports:
+        - containerPort: 4000
+        resources: {}
+      restartPolicy: Always
+status: {}
