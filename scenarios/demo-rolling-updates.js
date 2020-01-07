@@ -76,9 +76,7 @@ const workingdir = 'temp-working-dir'
 
         sh.echo('ctrl + c to close')
         sh.exec('kubectl get pods -w', { async: true })
-        
-
-
+        sh.exec('kubectl rollout status deployment boss', {async: true})
     })()
 
 
